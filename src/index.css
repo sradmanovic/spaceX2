@@ -5,9 +5,81 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-image: url("./images/space-water-1192081.jpg");
+  background-size: auto;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.btnContainer{
+  display: inline-block;
+  width: 100%;
+}
+.backBtn{
+  background-color: transparent;
+  color: whitesmoke;
+  float: left;
+  width: 75px;
+  height: 30px;
+  margin-bottom: 5%;
+  border: none;
+  font-size: 1.2em;
+  text-shadow: 1px 1px black;
+}
+
+.backBtn:hover{
+  color: rgb(240, 235, 235) ;
+  transition: 0.2s;
+  transform: scale(1.2);
+  transition-timing-function: ease-in-out;
+}
+
+.backBtn:active{
+  color: black;
+}
+
+.details{
+  width: 100%;
+  margin: auto;
+  color: whitesmoke;
+  text-shadow: 1px 1px black;
+}
+
+.search-params input{
+  width: 50%;
+  margin: auto;
+  margin-top: 2%;
+  margin-bottom: 2%;
+  border-radius: 50px 50px;
+  height: 10px;
+  padding: 1%;
+  border-style: ridge;
+  
+  
+}
+
+.loading{
+  font-size: 1.4em;
+  margin-top: 5%;
+  color: whitesmoke;
+  text-shadow: 1px 1px black;
+
+}
+
+.details-link{
+  text-decoration: none;
+  color: rgb(31, 30, 30);
+  
+  
+}
+
+.slika img {
+  max-width: 260px;
+}
+
+
