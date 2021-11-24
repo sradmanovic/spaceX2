@@ -5,17 +5,19 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { Link } from 'react-router-dom'
 import { useContext } from 'react';
-import ThemeContext from '../context/ThemeContext';
+import { ThemeContext } from '../context/ThemeContext';
 
 
 
 const NoteCard = ({ launch }) => {
-    const [theme] = useContext(ThemeContext)
+
+    const { isDarkTheme, light, dark } = useContext(ThemeContext);
+    const theme = isDarkTheme ? dark : light
 
     return (
 
         <Card sx={{
-            maxWidth: 345, height: 500, borderRadius: 5, backgroundColor: theme, overflow: 'hidden',
+            maxWidth: 345, height: 500, borderRadius: 5, backgroundColor: theme.bg, overflow: 'hidden',
             whiteSpace: 'nowrap', color: "white", borderColor: 'rgb(255, 255, 255, 0.2)', borderStyle: 'ridge', padding: 4, transitionDuration: 1000,
             ':hover': {
                 transform: "scale(1.02)"
@@ -44,13 +46,15 @@ const NoteCard = ({ launch }) => {
 
             <CardActions sx={{ justifyContent: 'center' }} >
                 <Link className="details-link" to={`/${launch.flight_number}`}>
-                    <Button size="large" variant="outlined" sx={{
-                        color: 'white',
-                        ':hover': {
-                            bgcolor: 'rgb(221, 218, 218, 0.4)',
-                            color: 'black',
-                        }
-                    }}>More Details</Button>
+                    <Button size="large"
+                        variant="outlined"
+                        sx={{
+                            color: 'white',
+                            ':hover': {
+                                bgcolor: 'rgb(221, 218, 218, 0.4)',
+                                color: 'black',
+                            }
+                        }}>More Details</Button>
                 </Link>
             </CardActions>
         </Card >

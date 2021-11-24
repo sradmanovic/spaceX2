@@ -3,15 +3,12 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import LaunchList from './components/LaunchList'
 import LaunchDetails from './components/LaunchDetails'
 import Navbar from './components/Navbar'
-import { useState } from 'react'
-import ThemeContext from './context/ThemeContext';
+import ThemeContextProvider from './context/ThemeContext';
 
 function App() {
 
-  const theme = useState("rgba(10, 10, 10, 0.5)");
-
   return (
-    <ThemeContext.Provider value={theme}>
+    <ThemeContextProvider>
       <Router>
         <div className="App">
 
@@ -30,7 +27,7 @@ function App() {
           </div>
         </div>
       </Router>
-    </ThemeContext.Provider>
+    </ThemeContextProvider>
   );
 }
 

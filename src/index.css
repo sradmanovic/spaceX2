@@ -15,16 +15,7 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
-.container{
-  width: 70%;
-  margin: auto;
-  /* background-color: rgb(255, 255, 255, 0.2); */
-  padding: 5%;
-  margin-top: 5%;
-  border-radius: 3%;
-  border: 3px ridge rgb(255, 255, 255, 0.2);
-  
-}
+
 .btnContainer{
   display: inline-block;
   width: 100%;
