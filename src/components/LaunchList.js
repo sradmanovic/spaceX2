@@ -9,7 +9,7 @@ const LaunchList = () => {
 
     const [flight_year, setFlight_year] = useState("");
     const [limit, setLimit] = useState(20)
-    const [offset, setOffset] = useState(1)
+    const [offset, setOffset] = useState(0)
 
     const { error, isPending, data: launches, hasMore } = useFetch(`${process.env.REACT_APP_BASE_URL}?limit=${limit}&offset=${offset}&filter&launch_year=${flight_year}`);
 
@@ -18,10 +18,11 @@ const LaunchList = () => {
         setLimit(5)
         setOffset(0)
 
+
     }
 
     const observerDiv = useRef();
-    const { lastLaunch } = useIntersection(observerDiv, hasMore, setLimit, isPending)
+    const { lastLaunch } = useIntersection(observerDiv, hasMore, setOffset, isPending, setLimit)
 
     return (
         < div className="home" >

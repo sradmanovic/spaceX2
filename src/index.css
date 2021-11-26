@@ -9,6 +9,7 @@ body {
   background-size: auto;
   background-repeat: no-repeat;
   background-attachment: fixed;
+  background-position-y: bottom;
 }
 
 code {
@@ -16,26 +17,40 @@ code {
     monospace;
 }
 
+.navbar{
+  height: 5em;
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+  width: 80%;
+  margin: auto;
+  margin-top: 1%;
+ 
+}
+.logo{
+max-height: 40px;
+}
+
 .btnContainer{
-  display: inline-block;
   width: 100%;
 }
 .backBtn{
   background-color: transparent;
-  color: whitesmoke;
+  color: rgb(219, 216, 216);
   float: left;
   width: 75px;
   height: 30px;
-  margin-bottom: 5%;
+  margin-bottom: 2%;
   border: none;
-  font-size: 1.2em;
-  text-shadow: 1px 1px black;
+  font-size: 1em;
+  font-weight: bold;
+  text-shadow: 1px 1px rgb(99, 98, 98);
 }
 
 .backBtn:hover{
   color: rgb(240, 235, 235) ;
   transition: 0.2s;
-  transform: scale(1.2);
+  transform: scale(1.1);
   transition-timing-function: ease-in-out;
 }
 
@@ -49,14 +64,16 @@ code {
   color: whitesmoke;
   text-shadow: 1px 1px black;
 }
+.details-image{
+  margin-left: 15%;
+}
 
 .search-params input{
-  width: 50%;
-  margin: auto;
+  width: 20%;
   margin-top: 2%;
   margin-bottom: 2%;
-  border-radius: 50px 50px;
-  height: 10px;
+  border-radius: 20px 20px;
+ background-color: rgba(71, 70, 70, 0.5);
   padding: 1%;
   border-style: ridge;
   
@@ -68,7 +85,7 @@ code {
   margin-top: 5%;
   color: whitesmoke;
   text-shadow: 1px 1px black;
-
+  
 }
 
 .details-link{
@@ -78,8 +95,13 @@ code {
   
 }
 
-.slika img {
+.image img {
   max-width: 260px;
-}
+  max-height: 250px;
 
+}
+.default-img{
+  border-radius: 50%;
+  height: 16em;
+}
 

@@ -1,17 +1,25 @@
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Switch from '@mui/material/Switch';
-import Toolbar from '@mui/material/Toolbar';
 import { useContext } from 'react';
+import { Link } from 'react-router-dom';
 import { ThemeContext } from '../context/ThemeContext';
+import image1 from '../images/PngItem_6781246.png'
+
+
 
 const Navbar = () => {
 
     const { toggleTheme } = useContext(ThemeContext)
 
     return (
-        <Toolbar >
-            <FormControlLabel color="inherit" control={<Switch defaultChecked color="default" />} onChange={toggleTheme} label="" />
-        </Toolbar>
+        <nav className="navbar">
+            <FormControlLabel control={<Switch defaultChecked color="default" />} onChange={toggleTheme} label="" />
+            <Link to='/'>
+                <img className="logo" src={image1} alt="spaceX logo" />
+            </Link>
+        </nav>
+
+
     );
 }
 
