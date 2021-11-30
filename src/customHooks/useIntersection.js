@@ -1,18 +1,18 @@
 import { useCallback } from 'react'
 
-const useIntersection = (observer, hasMore, setOffset, isPending, setLimit) => {
+const useIntersection = (observer, hasMore, setOffset, isPending) => {
 
     const lastLaunch = useCallback(node => {
         if (isPending) return
         if (observer.current) observer.current.disconnect()
         observer.current = new IntersectionObserver(entries => {
             if (entries[0].isIntersecting && hasMore) {
-                setLimit(prevLimit => prevLimit + 20)
-
+                setOffset(prevLimit => prevLimit + 20)
+                console.log("fetched")
             }
         })
         if (node) observer.current.observe(node)
-    }, [isPending, hasMore, observer, setLimit])
+    }, [isPending, hasMore, observer, setOffset])
 
     return { lastLaunch }
 

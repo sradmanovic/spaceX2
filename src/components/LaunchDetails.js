@@ -7,6 +7,7 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
 import { Container } from "@mui/material";
+import { SpinnerComponent } from 'react-element-spinner';
 
 const LaunchDetails = () => {
     const { id } = useParams();
@@ -21,10 +22,16 @@ const LaunchDetails = () => {
         history.goBack();
     }
 
+    function formatDate(string) {
+        const slicesString = string.slice(0, 10);
+        const dateArray = slicesString.split("-")
+        console.log(dateArray)
+    }
+
     return (
 
         <Container>
-            { isPending && <div className="loading"> Loading... </div>}
+            { isPending && <SpinnerComponent loading={isPending} position="global" />}
             { error && <div> {error} </div>}
             { launch && (
                 <Box sx={{
@@ -62,7 +69,8 @@ const LaunchDetails = () => {
                                     {launch.details}
                                     {!launch.details &&
                                         <p>No description available :(</p>}
-                                    <p>Launch date: {launch.launch_date_local}</p>
+                                    <p>Launch date: {formatDate(launch.launch_date_local)}</p>
+                                    {/* <p>Launch date: {(launch.launch_date_local).slice(0, 10)}</p> */}
                                     <Grid sx={{ borderBottom: '1px solid', borderTop: '1px solid', borderColor: theme.text }}>
                                         <h3>Rocket: </h3>
                                         <p>Name: {launch.rocket.rocket_name} </p>
