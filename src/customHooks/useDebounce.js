@@ -5,9 +5,11 @@ const useDebounce = (callback, dependency) => {
     useEffect(() => {
         const tmp = setTimeout(() => {
             callback()
-        }, 500)
-        console.log(tmp)
+        }, 1000)
+        return () => clearTimeout(tmp)
+
     }, [dependency])
+
 }
 
 export default useDebounce;

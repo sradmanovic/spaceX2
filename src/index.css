@@ -1,3 +1,8 @@
+/* :root{
+--primary: rgb(255, 255, 255, 0.4) ;
+--secondary: rgb(10, 10, 10, 0.5) ;
+} */
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -14,6 +19,116 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+.input-container{
+  display: flex;
+  flex-direction: column; 
+  max-width: 50%;
+  margin: auto;
+  
+}
+.input-container input{
+  margin: 20px;
+  background-color: rgba(218, 214, 214, 0.3);
+  border: none;
+  border-radius: 5px;
+  height: 2em;
+  box-shadow: 1px 1px 1px black;
+  padding: 0.5em;
+  
+}
+
+.profile-info{
+  display: flex;
+  justify-content: space-between;
+  padding: 3%;
+  margin: 1%;
+}
+
+/*NOTE CARD*/
+
+/* images*/
+ .image img {
+  max-width: 260px;
+  max-height: 250px;
+} 
+ .default-img{
+  border-radius: 50%;
+  height: 16em;
+} 
+
+/*card container*/
+.note-card{
+  max-width: 345px;
+  height: 580px;
+  overflow: hidden;
+  padding: 4%;
+  border-color: rgb(255, 255, 255, 0.3);
+  border-style: ridge;
+}
+
+/* card text*/
+.card-content{
+  text-overflow: ellipsis;
+  overflow: hidden;
+  height: 200px;
+  text-shadow: 1px 1px rgb(105, 105, 105);
+  
+}
+
+/* buttons and links*/
+.card-actions{
+  justify-content: center;
+  height: 50px;
+ 
+}
+.details-link{
+  text-decoration: none;
+  color: rgb(31, 30, 30);
+}
+.details-link:hover{
+  background-color: rgb(221, 218, 218, 0.2);
+  color: black;
+}
+
+/*FORM SUBMIT BUTTON*/
+.submit-button{
+  background-color: #079ecc;
+  padding: 1.5% 8%;
+  border-radius: 10px;
+  border:none;
+  box-shadow: 1px 1px 3px black;
+ 
+}
+.submit-button:hover{
+  background-color: #4ab7d8;
+  border: 1px solid rgb(5, 52, 73);
+}
+/*DETAILS BOX*/
+.details-box{
+  padding: 5%;
+  margin-top: 5%;
+  text-align: justify;
+  flex-grow: 1,
+}
+
+/*FORM PAGE*/
+.form-page{
+  border: 1px ridge rgba(238, 236, 236, 0.5);
+  width: 30%;
+  margin: auto;
+  padding: 5%;
+  padding-top: 2%;
+  color: #079ecc;
+  border-radius: 20px;
+  margin-top: 5%;
+  text-shadow: 1px 1px 1px rgb(0, 0, 0);
+  font-size: 1.2em
+}
+
+.user-name{
+ color: #079ecc; 
+ text-shadow: 1px 1px 1px rgb(0, 0, 0);
 }
 
 /* NAV BAR*/
@@ -32,10 +147,10 @@ max-height: 40px;
 }
 
 /* BACK BUTTON */
-.btnContainer{
+.back-btn-container{
   width: 100%;
 }
-.backBtn{
+.back-btn{
   background-color: transparent;
   color: rgb(219, 216, 216);
   float: left;
@@ -45,26 +160,29 @@ max-height: 40px;
   border: none;
   font-size: 1em;
 }
-.backBtn:hover{
+.back-btn:hover{
   color: rgb(240, 235, 235) ;
   transition: 0.2s;
   transform: scale(1.1);
   transition-timing-function: ease-in-out;
 }
-.backBtn:active{
+.back-btn:active{
   color: black;
 }
+
 
 /* DETAILS PAGE*/
 .details{
   width: 100%;
   margin: auto;
   color: whitesmoke;
-  text-shadow: 1px 1px black;
+  
 }
 .details-image{
   margin-left: 15%;
 }
+
+
 
 /* SEARCH INPUT*/
 .search-params input{
@@ -73,37 +191,22 @@ max-height: 40px;
   margin-bottom: 2%;
   border-radius: 15px 15px;
  background-color: rgba(71, 70, 70, 0.5);
-  padding: 1%;
+ /* background-color: var(--secondary); */
+  padding: 5px;
   border-style: ridge;
+  font-size: 1.2em;
 }
-.galleryImage{
+/* DETAILS FILCKR IMAGES*/
+.flickr-gallery{
   height: 100px;
   border-radius: 10%;
   margin: 1%;
   box-shadow: 2px 2px rgb(63, 63, 63);
 }
-.galleryImage:hover{
+.flickr-gallery:hover{
   transform: scale(3.01);
   transition: 0.6s;
 }
-
-/*NOTE CARD -MORE DETAILS- */
-.details-link{
-  text-decoration: none;
-  color: rgb(31, 30, 30);
-}
-
-/* NOTE CARD IMAGES*/
- .image img {
-  max-width: 260px;
-  max-height: 250px;
-} 
- .default-img{
-  border-radius: 50%;
-  height: 16em;
-} 
-
-
 
 /* ANIMATIONS */
 
@@ -388,4 +491,9 @@ max-height: 40px;
             animation-timing-function: ease-out;
     opacity: 1;
   }
+}
+
+@media only screen and (max-width: 945px) {
+
+
 }
