@@ -11,38 +11,100 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-image: url("./images/space-water-1192081.jpg");
-  background-size: auto;
+  background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-position-y: bottom;
+  
 }
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.profile-buttons {
+  font-size: 30px;
+  background: transparent;
+  cursor: pointer;
+  border-radius:100px;
+  border: none;
+  color: rgb(35, 94, 172);
+  box-shadow: 0 0px 10px #ccc;
+  padding: 40px 50px;
+}
+
+.profile-buttons:hover {
+  background: rgb(93, 102, 112);
+}
+
+
+/* BACK TO TOP BUTTON*/
+.back-to-top {
+  position: fixed;
+  bottom: 30px;
+  right: 40px;
+  font-size: 30px;
+  background: transparent;
+  color: white;
+  cursor: pointer;
+  border-radius: 100px;
+  border: none;
+  box-shadow: 0 0px 10px #ccc;
+  padding: 10px;
+}
+
+.back-to-top:hover {
+  background: rgb(93, 102, 112);
+}
+
+/* STICKY HEADER */
+.sticky-header{
+  position: sticky;
+  top: 4%;
+  z-index: 1;
+  border-radius: 20px;
+ padding-right: 2%;
+ padding-left: 2%;
+  
+}
+
+/* INPUT FIELD COMPONENT*/
 .input-container{
   display: flex;
   flex-direction: column; 
-  max-width: 50%;
+  max-width: 80%;
   margin: auto;
   
 }
 .input-container input{
   margin: 20px;
-  background-color: rgba(218, 214, 214, 0.3);
+  background-color: transparent;
+  color:rgb(255, 255, 255, 0.8);
+  /* border: 0.5px solid black; */
   border: none;
   border-radius: 5px;
   height: 2em;
-  box-shadow: 1px 1px 1px black;
+  box-shadow: 1px 1px 10px black;
   padding: 0.5em;
   
 }
+.input-container input:active{
+  background-color: transparent;
+ 
+}
+.input-container input:focus{
+  background-color: transparent;
+ 
+}
 
+/* PROFILE PAGE*/
 .profile-info{
   display: flex;
   justify-content: space-between;
-  padding: 3%;
   margin: 1%;
+  margin-bottom: 3%;
+ 
+  
 }
 
 /*NOTE CARD*/
@@ -63,6 +125,7 @@ code {
   height: 580px;
   overflow: hidden;
   padding: 4%;
+  padding-top: 7%;
   border-color: rgb(255, 255, 255, 0.3);
   border-style: ridge;
 }
@@ -92,43 +155,49 @@ code {
 }
 
 /*FORM SUBMIT BUTTON*/
-.submit-button{
-  background-color: #079ecc;
-  padding: 1.5% 8%;
-  border-radius: 10px;
-  border:none;
-  box-shadow: 1px 1px 3px black;
- 
-}
-.submit-button:hover{
-  background-color: #4ab7d8;
-  border: 1px solid rgb(5, 52, 73);
-}
+
 /*DETAILS BOX*/
 .details-box{
+  display: flex;
+  
+  justify-content: space-between;
+  align-items: center;
   padding: 5%;
   margin-top: 5%;
   text-align: justify;
   flex-grow: 1,
+  
+}
+.mission-name{
+  font-size: 2.5em;
+  margin-top: 5%;
+  margin-bottom: 2%;
+}
+.details-image{
+ margin-top: 0%;
 }
 
 /*FORM PAGE*/
 .form-page{
-  border: 1px ridge rgba(238, 236, 236, 0.5);
-  width: 30%;
+  border: 1px ridge rgba(238, 236, 236, 0.5); 
   margin: auto;
-  padding: 5%;
-  padding-top: 2%;
-  color: #079ecc;
+  margin-top:5%;
   border-radius: 20px;
-  margin-top: 5%;
+  padding: 3%;
   text-shadow: 1px 1px 1px rgb(0, 0, 0);
   font-size: 1.2em
+  
+}
+.welcome-user{
+  margin-bottom: 50px;
+  margin-top: 8%;
 }
 
 .user-name{
- color: #079ecc; 
+ color: rgb(255, 255, 255, 0.9);
  text-shadow: 1px 1px 1px rgb(0, 0, 0);
+ text-decoration: none;
+ z-index: 1;
 }
 
 /* NAV BAR*/
@@ -148,15 +217,19 @@ max-height: 40px;
 
 /* BACK BUTTON */
 .back-btn-container{
-  width: 100%;
+  position: relative;
 }
 .back-btn{
+  position: absolute;
+  text-align: end;
+  top: 0;
+  left: 0;
+  bottom: 0;
   background-color: transparent;
   color: rgb(219, 216, 216);
-  float: left;
   width: 75px;
-  height: 30px;
-  margin-bottom: 2%;
+  height: 20px;
+  margin: 3%;
   border: none;
   font-size: 1em;
 }
@@ -179,7 +252,7 @@ max-height: 40px;
   
 }
 .details-image{
-  margin-left: 15%;
+  margin: 0%;
 }
 
 
@@ -493,7 +566,158 @@ max-height: 40px;
   }
 }
 
-@media only screen and (max-width: 945px) {
+@media only screen and (max-width: 375px) {
+
+/* PROFILE PAGE*/
+.profile-info{
+  flex-direction: column;
+}
+
+/*card container*/
+.note-card{
+  height: 500px;
+  padding: 1%;
+  padding-top: 10%;
+}
+
+/* BACK TO TOP BUTTON*/
+.back-to-top {
+  font-size: 20px;
+}
+/* images*/
+.image img {
+  width: 180px;
+} 
+ .default-img{
+  height: 9em;
+} 
+
+.total-container {
+  max-width: 90%;
+  width: 90%;
+  margin: auto;
+  margin-top: 5%;
+  
+}
+/*DETAILS BOX*/
+.details-box{
+  width: 90%; 
+  text-align: center;
+ 
+}
+/**/
+.back-btn-container{
+width: 100%;
+padding: 0;
+font-size: 0.8em;
+}
+
+.content-container{
+  width: 99%;
+  margin: auto;
+}
+/**/
+
+.all-details{
+  width: 90%;
+  margin: auto;
+  height: max-content; 
+}
+
+.images-container{
+  width: 90%;
+  margin: auto;
+  padding: 0;
+}
+/* all-details >>>   */
+
+.details-image{
+  width: 99%;
+  margin: auto;
+  margin-top: 20%;
+  padding: 0; 
+}
+.details-image img{
+  width: 150px;
+  padding: 0;
+  margin: auto;
+}
+.details-text{
+  padding: 0;
+  margin: auto;
+}
+/* details-text >>>   */
+.mission-name{
+  width: 90%;
+  margin: auto;
+ margin-bottom: 10px;
+  font-size: 2em;
+  }
+.mission-description{
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  }
+.mission-launch{
+  width: 90%;
+  margin: 0;
+  padding: 0;
+  }
+/*FORM PAGE*/
+.form-page{ 
+  width: 90%;
+  margin: auto;
+  padding:5%;
+  margin-top: 5%;
+  font-size: 0.8em;
+  }
+}
+
+@media only screen and (max-width: 958px){
+
+  .navbar{
+    flex-direction: column;
+    justify-content: space-around;
+    width: 90%;
+      }
+.list-container{
+  max-width: 380px;
+  }
+  .details-image{
+    margin-top: 15%;
+  }
+  .details-box {
+    flex-direction: column;
+  }
+
+  .back-btn {
+    top: 0;
+  }
+
+}
+
+@media only screen and (max-width: 1300px){
+  body {
+    background-size: cover;
+    background-position-x: right;
+      } 
+
+ 
+
+  .logo{
+  max-height: 40px;
+  height: 30px;
+  padding-left: 1em;
+    }
+    .details-image{
+      margin-left: 0%;
+    }
 
 
+}
+
+@media only screen and (max-width: 1812px){
+  .sticky-header{
+    position: static;
+      }
 }

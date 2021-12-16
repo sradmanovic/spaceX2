@@ -1,14 +1,15 @@
 import { useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { useAuth } from '../context/AuthContext'
-import { Alert, Box } from "@mui/material";
+import { Alert, Button, Container } from "@mui/material";
 import { useContext } from 'react';
 import { ThemeContext } from '../context/ThemeContext';
 import InputField from "./InputField";
+import useValidateInput from "../customHooks/useValidateInput";
 
 const Login = () => {
 
-    const { login, currentUser } = useAuth()
+    const { login } = useAuth()
 
     const [error, setError] = useState("")
     const [loading, setLoading] = useState(false)
@@ -19,61 +20,75 @@ const Login = () => {
     const { isDarkTheme, light, dark } = useContext(ThemeContext);
     const theme = isDarkTheme ? dark : light
 
-    // handling input from custom input component using state
-    const [emailInput, setEmailInput] = useState()
-    const [passwordInput, setPasswordInput] = useState()
-
+    // handling email input from custom InputField component using state
+    const [emailInput, setEmailInput] = useState("")
     function handleChangeEmail(e) {
         setEmailInput(e.target.value)
     }
+
+    // handling password input from custom InputField component using state
+    const [passwordInput, setPasswordInput] = useState("")
     function handleChangePassword(e) {
         setPasswordInput(e.target.value)
     }
 
-    // useDebounce(handleChangeEmail, emailInput)
+    // const [confirmPassword, setConfirmPasswordInput] = useState("")
+
+    const [formSubmited, setFormSubmited] = useState(false);
+    const { emailValidationError, passwordValidationError, success } = useValidateInput(formSubmited, emailInput, passwordInput)
 
     // invoking firebase login function using AuthContext
     async function handleSubmit(e) {
         e.preventDefault()
-        try {
-            //invoking signup from AuthContext
-            setError("")
-            setLoading(true)
-            await login(emailInput, passwordInput)
-            history.push("/profile")
-        } catch (error) {
-            // handle errors
-            const errorCode = error.code;
-            const errorMessage = error.message;
-            if (errorCode === 'auth/wrong-password') {
-                setError('Wrong password.');
-            } else {
-                setError(errorMessage);
-            }
+        debugger
+        setFormSubmited(true)
+        console.log(formSubmited)
+        if (success) {
+            try {
+                setError("")
+                setLoading(true)
+                //invoking login from AuthContext
+                await login(emailInput, passwordInput)
+                history.push("/profile")
+            } catch (error) {
+                // handle errors
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                if (errorCode === 'auth/wrong-password') {
+                    setError('Wrong password.');
+                } else {
+                    setError(errorMessage);
+                }
 
+            }
+            setLoading(false)
         }
-        setLoading(false)
+
+    }
+    //back button
+    const handleClick = () => {
+        history.goBack();
     }
 
     return (
         <>
-            <Box sx={{ backgroundColor: theme.bg }} className="form-page">
-                <p>You must be logged in to access Mission Details page.</p>
+            <Container sx={{ backgroundColor: theme.bg, color: theme.text }} className="form-page">
+                <div className="back-btn-container">
+                    <button onClick={handleClick} className="back-btn"> &#x3c; Back </button>
+                </div>
+                <h2>Log In</h2>
                 {error && <Alert variant="outlined" severity="error"> {error}</Alert>}
-                {currentUser ? currentUser.email : "No user logged in"}
                 <form onSubmit={handleSubmit}>
-                    <InputField name="Email: " type="email" required value={emailInput} onChange={handleChangeEmail} />
-                    <div>
-                        {emailInput && emailInput}
-                    </div>
-                    <InputField name="Password: " type="password" required value={passwordInput} onChange={handleChangePassword} />
-                    <div>
-                        {passwordInput && passwordInput}
-                    </div>
-                    <button className="submit-button" type="submit" disabled={loading}>Log In</button>
+                    <InputField error={emailValidationError} name="Email: " type="email" required value={emailInput} onChange={handleChangeEmail} />
+
+                    <InputField error={passwordValidationError} name="Password: " type="password" required value={passwordInput} onChange={handleChangePassword} />
+                    <Button size="large"
+                        variant="outlined" type="submit" disabled={loading}>Log In</Button>
                 </form>
                 <p>Don't have an account? <span> <Link to='/signup'>Sign Up</Link> </span> </p>
-            </Box>
+                <p>Forgot your password? <span> <Link to='/forgot-password'>Reset Password</Link> </span> </p>
+                <small>All * fields are required</small>
+            </Container>
         </>);
 }
 

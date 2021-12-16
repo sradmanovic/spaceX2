@@ -1,15 +1,16 @@
 import { useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { useAuth } from '../context/AuthContext'
-import { Alert, Box } from "@mui/material";
+import { Alert, Button, Container } from "@mui/material";
 import { useContext } from 'react';
 import { ThemeContext } from '../context/ThemeContext';
 import InputField from "./InputField";
+import useValidateInput from "../customHooks/useValidateInput";
 
 
 const Signup = () => {
 
-    const { signup, currentUser } = useAuth()
+    const { signup } = useAuth()
 
     const [error, setError] = useState("")
     const [loading, setLoading] = useState(false)
@@ -21,76 +22,82 @@ const Signup = () => {
     const { isDarkTheme, light, dark } = useContext(ThemeContext);
     const theme = isDarkTheme ? dark : light
 
-    // invoking firebase signup function using AuthContext
-    // validating inputs via reg exp
-    async function handleSubmit(e) {
-        e.preventDefault()
 
-        //reg exp 7-15 characters including symbol and number
-        const paswd = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{7,15}$/;
-
-        const email = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
-
-        if (!passwordInput.match(paswd)) {
-            setError("")
-            return setError("Password has to be at least 7 characters long and contain at least one numeric digit and a special character.")
-        }
-
-        if (!emailInput.match(email)) {
-            setError("")
-            return setError("Invalid e-mail format.")
-        }
-
-        //invoking signup from AuthContext
-        try {
-            setError("")
-            setLoading(true)
-            await signup(emailInput, passwordInput)
-            history.push("/profile")
-        } catch (error) {
-            const errorCode = error.code;
-            const errorMessage = error.message;
-            if (errorCode === 'auth/weak-password') {
-                setError('The password is too weak.');
-            } else {
-                setError(errorMessage);
-            }
-
-        }
-        setLoading(false)
-    }
-
-    // handling input from custom InputField component using state
-    const [emailInput, setEmailInput] = useState()
-    const [passwordInput, setPasswordInput] = useState()
-
+    // handling email input from custom InputField component using state
+    const [emailInput, setEmailInput] = useState("")
     function handleChangeEmail(e) {
         setEmailInput(e.target.value)
     }
+
+    // handling password input from custom InputField component using state
+    const [passwordInput, setPasswordInput] = useState("")
     function handleChangePassword(e) {
         setPasswordInput(e.target.value)
     }
 
+    // handling password confirmation input from custom InputField component using state
+    const [passwordConfirmation, setPasswordConfirmationt] = useState("")
+    function handlePasswordConfirmation(e) {
+        setPasswordConfirmationt(e.target.value)
+    }
+
+    // boolean value confirming if form was submited, initialy set to false, changes value when submit button was clicked
+    const [formSubmited, setFormSubmited] = useState(false);
+
+    //custom hook for validation 
+    //takes in values from input and the value of formSubmited
+    //returns error messages to be passed as props to ImportField component and boolean value if the validation inside of the hook was done successfuly
+    const { emailValidationError, passwordValidationError, passwordConfirmationError, success } = useValidateInput(formSubmited, emailInput, passwordInput, passwordConfirmation)
+
+
+    async function handleSubmit(e) {
+        e.preventDefault()
+        debugger
+        setFormSubmited(true)
+        if (success) {
+            try {
+                setError("")
+                setLoading(true)
+                //invoking signup from AuthContext
+                await signup(emailInput, passwordInput)
+                history.push("/profile")
+            } catch (error) {
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                if (errorCode === 'auth/weak-password') {
+                    setError('The password is too weak.');
+                } else {
+                    setError(errorMessage);
+                }
+            }
+            setLoading(false)
+        }
+    }
+    //back button
+    const handleClick = () => {
+        history.goBack();
+    }
 
     return (
         <>
-            <Box sx={{ backgroundColor: theme.bg }} className="form-page">
+            <Container sx={{ backgroundColor: theme.bg, color: theme.text }} className="form-page">
+                <div className="back-btn-container">
+                    <button onClick={handleClick} className="back-btn"> &#x3c; Back </button>
+                </div>
                 <h1>Sign Up</h1>
-                {currentUser ? currentUser.email : "No user signed up"}
                 {error && <Alert variant="outlined" severity="error"> {error}</Alert>}
                 <form onSubmit={handleSubmit}>
-                    <InputField name="Email: " type="email" required value={emailInput} onChange={handleChangeEmail} />
-                    <div>
-                        {emailInput && emailInput}
-                    </div>
-                    <InputField name="Password: " type="password" required value={passwordInput} onChange={handleChangePassword} />
-                    <div>
-                        {passwordInput && passwordInput}
-                    </div>
-                    <button className="submit-button" type="submit" disabled={loading}>Sign Up</button>
+                    <InputField error={emailValidationError} name="Email: " type="email" value={emailInput} onChange={handleChangeEmail} />
+
+                    <InputField error={passwordValidationError} name="Password: " type="password" value={passwordInput} onChange={handleChangePassword} />
+
+                    <InputField error={passwordConfirmationError} name="Confirm Password: " type="password" value={passwordConfirmation} onChange={handlePasswordConfirmation} />
+                    <Button color="primary" size="large"
+                        variant="outlined" type="submit" disabled={loading}>Sign Up</Button>
                 </form>
                 <p>Already have an account? <span> <Link to='/login'>Log In</Link> </span> </p>
-            </Box>
+                <small>All * fields are required</small>
+            </Container>
         </>
     );
 }

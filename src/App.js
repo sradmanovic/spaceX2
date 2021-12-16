@@ -9,6 +9,8 @@ import Signup from './components/Signup';
 import { AuthProvider } from './context/AuthContext';
 import PrivateRoute from './components/PrivateRoute'
 import ProfilePage from './components/ProfilePage';
+import ForgotPassword from './components/ForgotPassword';
+import UpdateProfile from './components/UpdateProfile';
 
 function App() {
 
@@ -24,6 +26,8 @@ function App() {
                 <Route exact path="/" component={LaunchList} />
                 <Route exact path="/login" component={Login} />
                 <Route exact path="/signup" component={Signup} />
+                <Route path="/forgot-password" component={ForgotPassword} />
+                <PrivateRoute path="/update-profile" component={UpdateProfile} />
                 <PrivateRoute exact path="/profile" component={ProfilePage} />
                 <PrivateRoute exact path="/:id" component={LaunchDetails} />
               </Switch>
