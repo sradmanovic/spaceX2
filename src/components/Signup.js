@@ -84,14 +84,17 @@ const Signup = () => {
                 <div className="back-btn-container">
                     <button onClick={handleClick} className="back-btn"> &#x3c; Back </button>
                 </div>
-                <h1>Sign Up</h1>
+                <div className="form-title">
+                    <h1>Sign Up</h1>
+                </div>
+
                 {error && <Alert variant="outlined" severity="error"> {error}</Alert>}
                 <form onSubmit={handleSubmit}>
-                    <InputField error={emailValidationError} name="Email: " type="email" value={emailInput} onChange={handleChangeEmail} />
+                    <InputField error={emailValidationError} name="Email: " type="email" required value={emailInput} onChange={handleChangeEmail} />
 
-                    <InputField error={passwordValidationError} name="Password: " type="password" value={passwordInput} onChange={handleChangePassword} />
+                    <InputField error={passwordValidationError} name="Password: " required type="password" value={passwordInput} onChange={handleChangePassword} />
 
-                    <InputField error={passwordConfirmationError} name="Confirm Password: " type="password" value={passwordConfirmation} onChange={handlePasswordConfirmation} />
+                    <InputField required error={passwordConfirmationError} name="Confirm Password: " type="password" value={passwordConfirmation} onChange={handlePasswordConfirmation} />
                     <Button color="primary" size="large"
                         variant="outlined" type="submit" disabled={loading}>Sign Up</Button>
                 </form>

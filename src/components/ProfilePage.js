@@ -34,7 +34,7 @@ const ProfilePage = () => {
         <Container sx={{
             backgroundColor: theme.bg,
             color: theme.text,
-        }} className="form-page ">
+        }} className="form-page">
             <div className="back-btn-container">
                 <button onClick={handleClick} className="back-btn"> &#x3c; Back </button>
             </div>

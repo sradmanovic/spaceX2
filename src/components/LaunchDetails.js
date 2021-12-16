@@ -7,7 +7,7 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
 import { Container } from "@mui/material";
-import image2 from '../images/timerocket-1464312-1280x960.jpg'
+
 
 
 const LaunchDetails = () => {
@@ -33,7 +33,6 @@ const LaunchDetails = () => {
     }
 
     return (
-
         <Container className="slide-in-elliptic-top-fwd">
             <div className="back-btn-container">
                 <button onClick={handleClick} className="back-btn">
@@ -54,24 +53,20 @@ const LaunchDetails = () => {
                     className="details-box"
                     sx={{
                         backgroundColor: theme.bg,
-                        borderRadius: "2%",
+                        borderRadius: "20px",
                         border: "3px ridge rgb(255, 255, 255, 0.2)",
                         color: theme.text,
-                    }}
-                >
-                    {/* <Grid container spacing={1}> */}
-                    {/* <Grid item xs={5}> */}
-                    <div className="details-image">
-                        {launch.links.mission_patch_small ? (
+                    }} >
+
+                    <div>
+                        {launch.links.mission_patch_small && (
                             <img
                                 src={launch.links.mission_patch_small}
                                 alt={launch.mission_name + "logo"}
                             />
-                        ) : (
-                                <img className="default-img" src={image2} alt="spaceX logo" />
-                            )}
+                        )}
                     </div>
-                    {/* </Grid> */}
+
                     <Grid>
                         <Typography
                             className="tracking-in-expand"
@@ -92,8 +87,7 @@ const LaunchDetails = () => {
                                         borderBottom: "1px solid",
                                         borderTop: "1px solid",
                                         borderColor: theme.text,
-                                    }}
-                                >
+                                    }} >
                                     <h3>Rocket: </h3>
                                     <p>Name: {launch.rocket.rocket_name} </p>
                                     <p>Type: {launch.rocket.rocket_type}</p>
@@ -101,9 +95,7 @@ const LaunchDetails = () => {
                             </Typography>
                         </Grid>
                         <Grid
-                            className="slide-in-right"
-                        //   item xs={12}
-                        >
+                            className="slide-in-right">
                             <Typography variant="body1" sx={{ fontFamily: "monospace" }}>
                                 <p>Launch site: {launch.launch_site.site_name_long}</p>
                                 <p>
@@ -125,7 +117,7 @@ const LaunchDetails = () => {
                         </div>
                     </Grid>
 
-                    {/* </Grid> */}
+
 
                 </Box>
 

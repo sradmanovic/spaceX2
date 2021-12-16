@@ -47,7 +47,8 @@ const NoteCard = ({ launch }) => {
 
             <CardActions className="card-actions" >
                 <Link className="details-link" to={`/${launch.flight_number}`}>
-                    <Button size="large"
+                    <Button
+                        size="large"
                         variant="outlined"
                         sx={{ color: theme.text }}>More Details</Button>
                 </Link>

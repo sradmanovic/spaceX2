@@ -8,7 +8,7 @@ import useDebounce from '../customHooks/useDebounce';
 import { useAuth } from '../context/AuthContext'
 import { Link, useHistory } from "react-router-dom";
 import InputField from './InputField';
-import { Box, Button } from '@mui/material';
+import { Button } from '@mui/material';
 import LogoutTwoToneIcon from '@mui/icons-material/LogoutTwoTone';
 
 
@@ -109,16 +109,22 @@ const LaunchList = () => {
     return (
         <>
             <Container >
-                <InputField type="text" value={filterInput} placeholder="Enter year:" onChange={handleSearch} />
-            </Container>
-            <Box className="sticky-header"  >
+                <InputField
+                    type="text"
+                    value={filterInput}
+                    placeholder="Enter year:"
+                    onChange={handleSearch} />
+
                 <div className="profile-info">
                     <div className="user-name" >
                         {currentUser && (<Link className="user-name" to='/profile'>Hello, <span className="tracking-in-expand">{currentUser.email}</span>  !</Link>)}
                     </div>
                     <div >
-                        {currentUser && <Button sx={{ color: 'rgb(255, 255, 255, 0.9)' }} color="secondary" size="small"
-                            variant="text" onClick={handleLogout}> <LogoutTwoToneIcon></LogoutTwoToneIcon> Logout</Button>}
+                        {currentUser && <Button
+                            sx={{ color: 'rgb(255, 255, 255, 0.9)' }}
+                            size="small"
+                            variant="text"
+                            onClick={handleLogout}> <LogoutTwoToneIcon></LogoutTwoToneIcon> Logout</Button>}
                     </div >
                     {!currentUser && <div className="user-name" >
                         <Link className="user-name" to="/signup">Sign Up </Link>
@@ -126,17 +132,17 @@ const LaunchList = () => {
                         <Link className="user-name" to="/login"> Login</Link>
                     </div>}
                 </div>
-            </Box>
-            <Container>
+
+
                 {error && <div>{error}</div>}
                 {isPending && <div className="loadingio-spinner-eclipse-jc8w54eaf9"><div className="ldio-6zclm0831oa"><div></div> </div></div>}
-            </Container>
-            <Container className="list-container"  >
-                <Grid container spacing={8}>
+
+
+                <Grid container spacing={4}>
                     {showData && showData.map((launch) => {
-                        return (<Grid classname="single-launch" key={launch.mission_name} item xs={12} s={12} md={6} lg={4}>
+                        return (<Grid key={launch.mission_name} item xs={12} s={12} md={6} lg={4}>
                             <NoteCard launch={launch}  ></NoteCard>
-                            <div className="loading" ref={lastLaunch}></div>
+                            <div ref={lastLaunch}></div>
                         </Grid>)
                     })}
                 </Grid>

@@ -69,7 +69,10 @@ const Login = () => {
                 <div className="back-btn-container">
                     <button onClick={handleClick} className="back-btn"> &#x3c; Back </button>
                 </div>
-                <h2>Reset Password</h2>
+                <div className="form-title">
+                    <h2>Reset Password</h2>
+                </div>
+
                 {error && <Alert variant="outlined" severity="error"> {error}</Alert>}
                 <form onSubmit={handleSubmit}>
                     <InputField message={message} error={emailValidationError} name="Email: " type="email" required value={emailInput} onChange={handleChangeEmail} />

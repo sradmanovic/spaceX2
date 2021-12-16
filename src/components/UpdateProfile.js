@@ -1,7 +1,7 @@
 import { useState } from "react";
-import { Link, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { useAuth } from '../context/AuthContext'
-import { Alert, Box, Button, Container } from "@mui/material";
+import { Alert, Button, Container } from "@mui/material";
 import { useContext } from 'react';
 import { ThemeContext } from '../context/ThemeContext';
 import InputField from "./InputField";
@@ -90,7 +90,10 @@ const Signup = () => {
                 <div className="back-btn-container">
                     <button onClick={handleClick} className="back-btn"> &#x3c; Back </button>
                 </div>
-                <h1>Update Profile</h1>
+                <div className="form-title">
+                    <h1>Update Profile</h1>
+                </div>
+
                 {error && <Alert variant="outlined" severity="error"> {error}</Alert>}
                 <form onSubmit={handleSubmit}>
                     <InputField error={emailValidationError} name="Email: " type="email" required value={emailInput} onChange={handleChangeEmail} />

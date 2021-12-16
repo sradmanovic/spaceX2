@@ -11,12 +11,18 @@ const Navbar = () => {
     const { toggleTheme } = useContext(ThemeContext)
 
     return (
-        <nav className="navbar">
-            <FormControlLabel className="bounce-top" control={<Switch defaultChecked color="default" />} onChange={toggleTheme} label="" />
-            <Link to='/'>
-                <img className="bounce-top logo" src={image1} alt="spaceX logo" />
-            </Link>
-        </nav>
+        <div className="wrapperContainer">
+            <Container className="mainContainer" maxWidth="xl">
+                <Link to='/'>
+                    <img className="bounce-top logo" src={image1} alt="spaceX logo" />
+                </Link>
+                <FormControlLabel
+                    onChange={toggleTheme}
+                    className="bounce-top"
+                    control={<Switch defaultChecked color="default" />} label="" />
+
+            </Container>
+        </div>
     );
 }
 
