@@ -39,7 +39,7 @@ const ProfilePage = () => {
                 <button onClick={handleClick} className="back-btn"> &#x3c; Back </button>
             </div>
             <div className="welcome-user slide-in-right">
-                {currentUser && <h1>Welcome {currentUser.email} !</h1>}
+                {currentUser && <h2>Welcome {currentUser.email} !</h2>}
             </div>
 
             <Link to="/">

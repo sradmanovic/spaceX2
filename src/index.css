@@ -224,10 +224,15 @@ body {
   .profile-info{
     flex-direction: column;
   }
-  body {
-    background-size: cover;
-    background-position-x: right;
-      } 
+  .back-btn-container{
+    position: relative;
+    margin-bottom: 20%;
+  }
+  .back-btn{
+    font-size: 0.5em;
+    
+  }
+
   }
   
   @media only screen and (max-width: 958px){
