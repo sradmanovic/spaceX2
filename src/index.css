@@ -219,7 +219,7 @@ body {
   text-shadow: 1px 1px 1px rgb(0, 0, 0);
   font-size: 1.2em;
   padding-bottom: 10%;
-  
+  margin-top: 5%;
 }
 .form-title{
   margin-top: 3%;
@@ -244,7 +244,6 @@ body {
   .details{
     margin: 10%; 
   }
-  
 
   }
   
