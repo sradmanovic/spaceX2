@@ -40,7 +40,7 @@ const NoteCard = ({ launch }) => {
                     variant="body3" >
                     {launch.details}
                     {!launch.details &&
-                        <p>No description available :(</p>}
+                        <p>No description available &#x2639;</p>}
                 </Typography>
             </CardContent>
 

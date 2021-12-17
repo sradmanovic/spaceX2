@@ -36,7 +36,7 @@ const LaunchDetails = () => {
         <>
             <Container className="slide-in-elliptic-top-fwd">
                 <div className="back-btn-container ">
-                    <button onClick={handleClick} className="back-btn details">
+                    <button style={{ color: theme.text }} onClick={handleClick} className="back-btn details">
                         {" "}
           &#x3c; Back{" "}
                     </button>

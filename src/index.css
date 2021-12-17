@@ -1,15 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Playball&family=Quicksand&family=Teko:wght@600&display=swap');
 
-/* 
-font-family: 'Playball', cursive;
-font-family: 'Quicksand', sans-serif;
-font-family: 'Teko', sans-serif; */
-
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
     font-family: 'Teko', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -20,16 +12,12 @@ body {
   background-position-y: bottom;  
 }
 
-/* h2, h1, .card-name{
-  font-family: 'Teko', sans-serif;
-} */
-
 /* ------------------------NAV BAR------------------------------------------ */
 .wrapperContainer .mainContainer{
   display: flex;
   justify-content: space-between;
-  margin-top: 10px;
   max-width: 100%;
+  margin-top: 10px;
 }
 .logo{
   width: 100%;
@@ -45,27 +33,26 @@ body {
   margin-bottom: 3%;
 }
 .user-name{
-  color: rgb(255, 255, 255, 0.9);
-  text-shadow: 1px 1px 1px rgb(0, 0, 0);
-  text-decoration: none;
   z-index: 1;
+  color: rgb(255, 255, 255, 0.9);
   font-size: 1.2em;
+  text-shadow: 1px 1px 1px rgb(0, 0, 0);
+  text-decoration: none; 
  }
  /* BACK TO TOP BUTTON*/
 .back-to-top {
   position: fixed;
   bottom: 30px;
   right: 40px;
-  font-size: 30px;
   background: transparent;
-  color: white;
-  cursor: pointer;
+  box-shadow: 0 0px 10px #ccc;
   border-radius: 100px;
   border: none;
-  box-shadow: 0 0px 10px #ccc;
+  font-size: 30px;
+  color: white;
+  cursor: pointer;
   padding: 10px;
 }
-
 .back-to-top:hover {
   background: rgb(93, 102, 112);
 }
@@ -81,14 +68,14 @@ body {
   top: 0;
   left: 0;
   bottom: 0;
+  z-index: 1;
   background-color: transparent;
-  color: rgb(219, 216, 216);
+  font-family: 'Teko', sans-serif;
+  font-size: 1em;
+  border: none; 
   margin-left: 2%;
   padding: 1%;
-  border: none;
-  font-size: 1em;
-  z-index: 1;
-  font-family: 'Teko', sans-serif;
+  
 }
 .back-btn:hover{
   color: rgb(240, 235, 235) ;
@@ -117,9 +104,9 @@ body {
 /* DETAILS FILCKR IMAGES*/
 .flickr-gallery{
   height: 100px;
+  box-shadow: 2px 2px rgb(63, 63, 63);
   border-radius: 10%;
   margin: 1%;
-  box-shadow: 2px 2px rgb(63, 63, 63);
 }
 .flickr-gallery:hover{
   transform: scale(3.01);
@@ -136,18 +123,17 @@ body {
 /* PROFILE PAGE BUTTON LINKS */
 .profile-buttons {
   font-size: 30px;
+  color: rgb(35, 94, 172);
   background: transparent;
-  cursor: pointer;
+  box-shadow: 0 0px 10px #ccc;
   border-radius:100px;
   border: none;
-  color: rgb(35, 94, 172);
-  box-shadow: 0 0px 10px #ccc;
+  cursor: pointer;
   padding: 20px 30px;
 }
 .profile-buttons:hover {
   background: rgb(93, 102, 112);
 }
-
 .welcome-user{
   margin-bottom: 5%;
   margin-top: 5%;
@@ -169,24 +155,22 @@ body {
 .note-card{
   height: 580px;
   overflow: hidden;
-  padding: 4%;
-  padding-top: 7%;
   border-color: rgb(255, 255, 255, 0.3);
   border-style: ridge;
+  padding: 4%;
+  padding-top: 7%;
 }
 /* card text*/
 .card-content{
   text-overflow: ellipsis;
   overflow: hidden;
   height: 200px;
-  text-shadow: 1px 1px rgb(105, 105, 105);
 }
 /* buttons and links*/
 .card-actions{
   justify-content: center;
   height: 50px;
 }
-
 .details-link{
   text-decoration: none;
   color: rgb(31, 30, 30);
@@ -196,24 +180,21 @@ body {
   color: black;
 }
 
-
 /*------------------------- INPUT FIELD COMPONENT--------------------------- */
 .input-container{
   display: flex;
   flex-direction: column; 
-  margin: auto;
-  
+  margin: auto; 
 }
 .input-container input{
-  margin: 20px;
-  background-color: transparent;
+  height: 2em;
   color:rgb(255, 255, 255);
+  background-color: transparent;
+  box-shadow: 1px 1px 10px black;
   border: none;
   border-radius: 5px;
-  height: 2em;
-  box-shadow: 1px 1px 10px black;
+  margin: 20px;
   padding: 0.5em;
-  
 }
 .input-container input:active{
   background-color: transparent;
@@ -228,23 +209,19 @@ body {
   font-size: 1.2em;
 }
 
-
 /*-----------------------------------FORM PAGE------------------------*/
 .form-page{
   border: 1px ridge rgba(238, 236, 236, 0.5); 
-  margin: auto;
-  margin-top:3%;
   border-radius: 20px;
-  padding: 3%;
-  /* text-shadow: 1px 1px 1px rgb(0, 0, 0); */
   font-size: 1.2em;
+  margin: auto;
+  padding: 3%;
   padding-bottom: 50px;
   margin-top: 5%;
 }
 .form-title{
   margin-top: 3%;
 }
-
 
 @media only screen and (max-width: 385px) {
 
@@ -258,7 +235,6 @@ body {
   .details{
     margin: 10%; 
   }
-
   }
   
   @media only screen and (max-width: 958px){
@@ -286,8 +262,6 @@ body {
       padding: 1%;
       width: 50px;
     }
-  
-
   }
   
  
