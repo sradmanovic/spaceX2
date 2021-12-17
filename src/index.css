@@ -1,8 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Playball&family=Quicksand&family=Teko:wght@600&display=swap');
+
+/* 
+font-family: 'Playball', cursive;
+font-family: 'Quicksand', sans-serif;
+font-family: 'Teko', sans-serif; */
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
+    font-family: 'Teko', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-image: url("./images/space-water-1192081.jpg");
@@ -12,11 +20,16 @@ body {
   background-position-y: bottom;  
 }
 
+/* h2, h1, .card-name{
+  font-family: 'Teko', sans-serif;
+} */
+
 /* ------------------------NAV BAR------------------------------------------ */
 .wrapperContainer .mainContainer{
   display: flex;
   justify-content: space-between;
   margin-top: 10px;
+  max-width: 100%;
 }
 .logo{
   width: 100%;
@@ -36,6 +49,7 @@ body {
   text-shadow: 1px 1px 1px rgb(0, 0, 0);
   text-decoration: none;
   z-index: 1;
+  font-size: 1.2em;
  }
  /* BACK TO TOP BUTTON*/
 .back-to-top {
@@ -74,6 +88,7 @@ body {
   border: none;
   font-size: 1em;
   z-index: 1;
+  font-family: 'Teko', sans-serif;
 }
 .back-btn:hover{
   color: rgb(240, 235, 235) ;
@@ -206,6 +221,8 @@ body {
 }
 .input-container input::placeholder{
   color:rgb(255, 255, 255, 0.8);
+  font-family: 'Teko', sans-serif;
+  font-size: 1.2em;
 }
 
 
@@ -218,7 +235,7 @@ body {
   padding: 3%;
   text-shadow: 1px 1px 1px rgb(0, 0, 0);
   font-size: 1.2em;
-  padding-bottom: 10%;
+  padding-bottom: 50px;
   margin-top: 5%;
 }
 .form-title{

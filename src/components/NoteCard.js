@@ -26,12 +26,11 @@ const NoteCard = ({ launch }) => {
             </div>
 
             <CardContent className="card-content">
-                <Typography className="tracking-in-expand"
-                    variant="h4"
+                <Typography className="card-name tracking-in-expand"
+                    variant="h3" fontFamily="'Teko', sans-serif"
                     sx={{
                         letterSpacing: 2,
                         minHeight: 150,
-                        fontFamily: "fantasy"
                     }}>
                     {launch.mission_name}
                 </Typography>
@@ -50,6 +49,7 @@ const NoteCard = ({ launch }) => {
                     <Button
                         size="large"
                         variant="outlined"
+
                         sx={{ color: theme.text }}>More Details</Button>
                 </Link>
             </CardActions>

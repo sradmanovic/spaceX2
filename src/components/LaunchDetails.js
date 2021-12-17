@@ -73,9 +73,8 @@ const LaunchDetails = () => {
                                 className="tracking-in-expand"
                                 gutterBottom
                                 variant="h2"
-                                sx={{ fontFamily: "fantasy" }}
                             >
-                                {launch.mission_name}
+                                <h2>{launch.mission_name}</h2>
                             </Typography>
 
                             <Grid className="slide-in-right">
