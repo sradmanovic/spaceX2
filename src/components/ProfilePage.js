@@ -36,7 +36,7 @@ const ProfilePage = () => {
             color: theme.text,
         }} className="form-page">
             <div className="back-btn-container">
-                <button onClick={handleClick} className="back-btn"> &#x3c; Back </button>
+                <button style={{ color: theme.text }} onClick={handleClick} className="back-btn"> &#x3c; Back </button>
             </div>
             <div className="welcome-user slide-in-right">
                 <h1>Welcome </h1>
