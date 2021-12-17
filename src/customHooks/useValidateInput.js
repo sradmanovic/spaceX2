@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-const useValidateInput = (formSubmited, emailInput, passwordInput, confirmPassword = null) => {
+const useValidateInput = (emailInput, passwordInput, confirmPassword = null) => {
 
     const [emailValidationError, setEmailValidationError] = useState("")
     const [passwordValidationError, setPasswordValidationError] = useState("")
@@ -15,43 +15,43 @@ const useValidateInput = (formSubmited, emailInput, passwordInput, confirmPasswo
 
         //if the value of formSubmitted was changed into true it will run the checks
         //as long as the value is false, meaning submit button was not clicked it will not run the checks, it will send back eror messages empty and the value of success false (as initialized)
-        //if it reaches any ot the unvalid conditions it will set the value of success to false which will stop the try/catch block for AuthContext signup function
-        if (formSubmited) {
+        //if it reaches any of the unvalid conditions it will set the value of success to false which will stop the try/catch block for AuthContext signup function
+        // if (formSubmited) {
 
-            if (emailInput) {
-                if (emailInput.match(email)) {
-                    setEmailValidationError("")
-                    setSuccess(true);
-                    console.log("Enter email match")
-                } else {
-                    setEmailValidationError("Invalid e-mail format.")
-                    setSuccess(false);
-                    console.log("Enter emial doesnt match")
-                }
-            }
-            if (passwordInput) {
-                if (passwordInput.match(paswd)) {
-                    setPasswordValidationError("")
-                    setSuccess(true);
-                    console.log("Enter password match")
-                } else {
-                    setPasswordValidationError("Password has to be between 7 and 15 characters long and contain at least one numeric digit and a special character.")
-                    setSuccess(false);
-                    console.log("Enter password doesnt match")
-                }
-            }
-            if (confirmPassword) {
-                if (confirmPassword === passwordInput) {
-                    setPasswordConfirmationError("")
-                    setSuccess(true)
-                } else {
-                    setPasswordConfirmationError("Passwords must match!")
-                    setSuccess(false);
-                }
+        if (emailInput) {
+            if (emailInput.match(email)) {
+                setEmailValidationError("")
+                setSuccess(true);
+                console.log("Enter email match")
+            } else {
+                setEmailValidationError("Invalid e-mail format.")
+                setSuccess(false);
+                console.log("Enter emial doesnt match")
             }
         }
+        if (passwordInput) {
+            if (passwordInput.match(paswd)) {
+                setPasswordValidationError("")
+                setSuccess(true);
+                console.log("Enter password match")
+            } else {
+                setPasswordValidationError("Password has to be between 7 and 15 characters long and contain at least one numeric digit and a special character.")
+                setSuccess(false);
+                console.log("Enter password doesnt match")
+            }
+        }
+        if (confirmPassword) {
+            if (confirmPassword === passwordInput) {
+                setPasswordConfirmationError("")
+                setSuccess(true)
+            } else {
+                setPasswordConfirmationError("Passwords must match!")
+                setSuccess(false);
+            }
+        }
+        // }
         //entire function runs every time any of the inputs or formSubmitted boolean changes
-    }, [emailInput, passwordInput, confirmPassword, formSubmited])
+    }, [emailInput, passwordInput, confirmPassword])
 
     return { emailValidationError, passwordValidationError, passwordConfirmationError, success };
 

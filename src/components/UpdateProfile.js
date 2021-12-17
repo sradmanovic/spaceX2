@@ -47,7 +47,7 @@ const Signup = () => {
     //custom hook for validation 
     //takes in values from input and the value of formSubmited
     //returns error messages to be passed as props to ImportField component and boolean value if the validation inside of the hook was done successfuly
-    const { emailValidationError, passwordValidationError, passwordConfirmationError, success } = useValidateInput(formSubmited, emailInput, passwordInput, passwordConfirmation)
+    const { emailValidationError, passwordValidationError, passwordConfirmationError, success } = useValidateInput(emailInput, passwordInput, passwordConfirmation)
 
 
     async function handleSubmit(e) {
@@ -72,7 +72,10 @@ const Signup = () => {
                     history.push("/profile")
                 })
                 .catch(() => {
-                    setError("Failed to update account")
+                    const errorCode = error.code;
+                    const errorMessage = error.message;
+
+                    setError(errorMessage)
                 })
                 .finally(() => {
                     setLoading(false)
@@ -96,11 +99,11 @@ const Signup = () => {
 
                 {error && <Alert variant="outlined" severity="error"> {error}</Alert>}
                 <form onSubmit={handleSubmit}>
-                    <InputField error={emailValidationError} name="Email: " type="email" required value={emailInput} onChange={handleChangeEmail} />
+                    <InputField error={formSubmited ? emailValidationError : ""} name="Email: " type="email" required value={emailInput} onChange={handleChangeEmail} />
 
-                    <InputField error={passwordValidationError} name="Password: " type="password" required value={passwordInput} onChange={handleChangePassword} />
+                    <InputField error={formSubmited ? passwordValidationError : ""} name="Password: " type="password" required value={passwordInput} onChange={handleChangePassword} />
 
-                    <InputField error={passwordConfirmationError} name="Confirm Password: " type="password" required value={passwordConfirmation} onChange={handlePasswordConfirmation} />
+                    <InputField error={formSubmited ? passwordConfirmationError : ""} name="Confirm Password: " type="password" required value={passwordConfirmation} onChange={handlePasswordConfirmation} />
                     <Button color="primary" size="large"
                         variant="outlined" type="submit" disabled={loading}>Update</Button>
                     <p><small>All * fields are required</small></p>

@@ -32,15 +32,14 @@ const Login = () => {
         setPasswordInput(e.target.value)
     }
 
-    // const [confirmPassword, setConfirmPasswordInput] = useState("")
-
+    //using custom hook to validate input
     const [formSubmited, setFormSubmited] = useState(false);
-    const { emailValidationError, passwordValidationError, success } = useValidateInput(formSubmited, emailInput, passwordInput)
+    const { emailValidationError, passwordValidationError, success } = useValidateInput(emailInput, passwordInput)
 
     // invoking firebase login function using AuthContext
     async function handleSubmit(e) {
         e.preventDefault()
-        debugger
+
         setFormSubmited(true)
         console.log(formSubmited)
         if (success) {
@@ -80,16 +79,17 @@ const Login = () => {
                     <h2>Log In</h2>
                 </div>
 
-                {error && <Alert variant="outlined" severity="error"> {error}</Alert>}
+                {error && <Alert variant="filled" severity="error"> {error}</Alert>}
                 <form onSubmit={handleSubmit}>
-                    <InputField error={emailValidationError} name="Email: " type="email" required value={emailInput} onChange={handleChangeEmail} />
+                    <InputField error={formSubmited ? emailValidationError : ""} name="Email: " type="email" required value={emailInput} onChange={handleChangeEmail} />
 
-                    <InputField error={passwordValidationError} name="Password: " type="password" required value={passwordInput} onChange={handleChangePassword} />
+                    <InputField error={formSubmited ? passwordValidationError : ""} name="Password: " type="password" required value={passwordInput} onChange={handleChangePassword} />
                     <Button size="large"
                         variant="outlined" type="submit" disabled={loading}>Log In</Button>
                 </form>
+                <p> <Link to='/forgot-password'> Forgot your password? </Link></p>
                 <p>Don't have an account? <span> <Link to='/signup'>Sign Up</Link> </span> </p>
-                <p>Forgot your password? <span> <Link to='/forgot-password'>Reset Password</Link> </span> </p>
+
                 <small>All * fields are required</small>
             </Container>
         </>);

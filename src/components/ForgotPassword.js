@@ -14,6 +14,8 @@ const Login = () => {
     const [error, setError] = useState("")
     const [loading, setLoading] = useState(false)
 
+    const [message, setMessage] = useState("")
+
     const history = useHistory()
 
     //using ThemeContext to change theme
@@ -26,12 +28,9 @@ const Login = () => {
         setEmailInput(e.target.value)
     }
 
-    // const [confirmPassword, setConfirmPasswordInput] = useState("")
-
+    //using useValidate to check if email format is correct
     const [formSubmited, setFormSubmited] = useState(false);
-    const { emailValidationError, success } = useValidateInput(formSubmited, emailInput)
-
-    const [message, setMessage] = useState("")
+    const { emailValidationError, success } = useValidateInput(emailInput)
 
     // invoking firebase login function using AuthContext
     async function handleSubmit(e) {
@@ -50,7 +49,10 @@ const Login = () => {
 
             } catch (error) {
                 // handle errors
-                setError("Failed to reset password")
+                const errorCode = error.code;
+                const errorMessage = error.message;
+
+                setError(errorMessage)
 
             }
             setLoading(false)
@@ -73,9 +75,9 @@ const Login = () => {
                     <h2>Reset Password</h2>
                 </div>
 
-                {error && <Alert variant="outlined" severity="error"> {error}</Alert>}
+                {error && <Alert variant="filled" severity="error"> {error}</Alert>}
                 <form onSubmit={handleSubmit}>
-                    <InputField message={message} error={emailValidationError} name="Email: " type="email" required value={emailInput} onChange={handleChangeEmail} />
+                    <InputField message={message} error={formSubmited ? emailValidationError : ""} name="Email: " type="email" required value={emailInput} onChange={handleChangeEmail} />
                     <Button size="large"
                         variant="outlined" type="submit" disabled={loading}>Reset Password</Button>
                 </form>
