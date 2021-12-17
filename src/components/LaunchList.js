@@ -140,7 +140,7 @@ const LaunchList = () => {
 
                 <Grid container spacing={4}>
                     {showData && showData.map((launch) => {
-                        return (<Grid key={launch.mission_name} item xs={12} s={12} md={6} lg={4}>
+                        return (<Grid key={launch.mission_name} item xs={12} s={6} md={4} lg={4}>
                             <NoteCard launch={launch}  ></NoteCard>
                             <div ref={lastLaunch}></div>
                         </Grid>)

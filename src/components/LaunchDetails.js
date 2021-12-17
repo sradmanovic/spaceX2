@@ -59,7 +59,7 @@ const LaunchDetails = () => {
                             color: theme.text,
                         }} >
 
-                        <div>
+                        <div className="mission-image">
                             {launch.links.mission_patch_small && (
                                 <img
                                     src={launch.links.mission_patch_small}
@@ -68,19 +68,19 @@ const LaunchDetails = () => {
                             )}
                         </div>
 
-                        <Grid>
+                        <Grid className="details-text">
                             <Typography
                                 className="tracking-in-expand"
-                                gutterBottom
-                                variant="h2"
+                                variant="h3"
+                                fontFamily="'Teko', sans-serif"
                             >
                                 <h2>{launch.mission_name}</h2>
                             </Typography>
 
                             <Grid className="slide-in-right">
-                                <Typography variant="body1" sx={{ fontFamily: "monospace" }}>
+                                <Typography variant="body1" fontFamily="'Teko', sans-serif" >
                                     {launch.details}
-                                    {!launch.details && <p>No description available :(</p>}
+                                    {!launch.details && <p>No description available     &#x2639;</p>}
                                     <p>Launch date: {formatDate(launch.launch_date_local)}</p>
                                     <Grid
                                         sx={{
@@ -96,7 +96,10 @@ const LaunchDetails = () => {
                             </Grid>
                             <Grid
                                 className="slide-in-right">
-                                <Typography variant="body1" sx={{ fontFamily: "monospace" }}>
+                                <Typography
+                                    variant="body1"
+                                    fontFamily="'Teko', sans-serif">
+
                                     <p>Launch site: {launch.launch_site.site_name_long}</p>
                                     <p>
                                         Launch success:{" "}

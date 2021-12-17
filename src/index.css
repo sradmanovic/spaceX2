@@ -110,6 +110,9 @@ body {
   padding: 5%;
   margin-top: 5%;
 }
+.details-text{
+  max-width:50%;
+}
 
 /* DETAILS FILCKR IMAGES*/
 .flickr-gallery{
@@ -233,7 +236,7 @@ body {
   margin-top:3%;
   border-radius: 20px;
   padding: 3%;
-  text-shadow: 1px 1px 1px rgb(0, 0, 0);
+  /* text-shadow: 1px 1px 1px rgb(0, 0, 0); */
   font-size: 1.2em;
   padding-bottom: 50px;
   margin-top: 5%;
@@ -243,7 +246,7 @@ body {
 }
 
 
-@media only screen and (max-width: 375px) {
+@media only screen and (max-width: 385px) {
 
   .profile-info{
     flex-direction: column;
@@ -251,12 +254,6 @@ body {
   .back-btn-container{
     position: relative;
     margin-bottom: 20%;
-  }
-  .back-btn{
-    font-size: 0.5em;
-    margin-left: 1%;
-    margin-top: 5%;
-    padding: 1%;
   }
   .details{
     margin: 10%; 
@@ -276,7 +273,21 @@ body {
     .back-btn {
       top: 0;
     }
+    .details-text{
+      max-width:100%;
+    }
+    .mission-image{
+      height: 220px;
+      padding-top: 40px;
+    }
+    .back-btn{
+      font-size: 0.7em;
+      margin-top: 5%;
+      padding: 1%;
+      width: 50px;
+    }
   
+
   }
   
  
