@@ -185,6 +185,7 @@ body {
   display: flex;
   flex-direction: column; 
   margin: auto; 
+  padding-bottom: 20px;
 }
 .input-container input{
   height: 2em;

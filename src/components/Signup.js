@@ -80,7 +80,7 @@ const Signup = () => {
 
     return (
         <>
-            <Container sx={{ backgroundColor: theme.bg, color: theme.text }} className="form-page">
+            <Container spacing={2} sx={{ backgroundColor: theme.bg, color: theme.text }} className="form-page">
                 <div className="back-btn-container">
                     <button style={{ color: theme.text }} onClick={handleClick} className="back-btn"> &#x3c; Back </button>
                 </div>

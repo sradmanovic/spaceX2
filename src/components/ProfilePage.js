@@ -31,7 +31,7 @@ const ProfilePage = () => {
     }
 
     return (
-        <Container sx={{
+        <Container spacing={2} sx={{
             backgroundColor: theme.bg,
             color: theme.text,
         }} className="form-page">
