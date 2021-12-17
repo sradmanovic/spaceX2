@@ -19,6 +19,7 @@ body {
   margin-top: 10px;
 }
 .logo{
+  width: 100%;
   max-height: 40px;
   } 
 
@@ -68,8 +69,8 @@ body {
   bottom: 0;
   background-color: transparent;
   color: rgb(219, 216, 216);
-  margin: 3%;
-  padding: 3%;
+  margin-left: 2%;
+  padding: 1%;
   border: none;
   font-size: 1em;
   z-index: 1;
@@ -79,6 +80,11 @@ body {
   transition: 0.2s;
   transform: scale(1.1);
   transition-timing-function: ease-in-out;
+}
+.details{
+  margin: 3%;
+  padding: 3%;
+  padding-top: 2%;
 }
 
 /*DETAILS BOX*/
@@ -126,7 +132,7 @@ body {
 
 .welcome-user{
   margin-bottom: 5%;
-  margin-top: 12%;
+  margin-top: 5%;
 }
 
 /*---------------------------NOTE CARD COMPONENT---------------------------*/
@@ -211,11 +217,12 @@ body {
   border-radius: 20px;
   padding: 3%;
   text-shadow: 1px 1px 1px rgb(0, 0, 0);
-  font-size: 1.2em
+  font-size: 1.2em;
+  padding-bottom: 10%;
   
 }
 .form-title{
-  margin-top: 15%;
+  margin-top: 3%;
 }
 
 
@@ -230,8 +237,14 @@ body {
   }
   .back-btn{
     font-size: 0.5em;
-    
+    margin-left: 1%;
+    margin-top: 5%;
+    padding: 1%;
   }
+  .details{
+    margin: 10%; 
+  }
+  
 
   }
   

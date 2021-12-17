@@ -34,8 +34,8 @@ const LaunchDetails = () => {
 
     return (
         <Container className="slide-in-elliptic-top-fwd">
-            <div className="back-btn-container">
-                <button onClick={handleClick} className="back-btn">
+            <div className="back-btn-container ">
+                <button onClick={handleClick} className="back-btn details">
                     {" "}
           &#x3c; Back{" "}
                 </button>
