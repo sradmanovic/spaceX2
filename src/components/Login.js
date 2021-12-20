@@ -71,7 +71,7 @@ const Login = () => {
 
     return (
         <>
-            <Container spacing={2} sx={{ backgroundColor: theme.bg, color: theme.text }} className="form-page">
+            <Container spacing={2} sx={{ backgroundColor: theme.bg, color: theme.text }} className="form-page slide-in-elliptic-top-fwd">
                 <div className="back-btn-container">
                     <button style={{ color: theme.text }} onClick={handleClick} className="back-btn"> &#x3c; Back </button>
                 </div>

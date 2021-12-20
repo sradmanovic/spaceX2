@@ -31,35 +31,50 @@ const ProfilePage = () => {
     }
 
     return (
-        <Container spacing={2} sx={{
+        <Container sx={{
             backgroundColor: theme.bg,
             color: theme.text,
-        }} className="form-page">
+            marginBottom: "20px"
+        }} className="form-page slide-in-elliptic-top-fwd">
             <div className="back-btn-container">
                 <button style={{ color: theme.text }} onClick={handleClick} className="back-btn"> &#x3c; Back </button>
             </div>
+
             <div className="welcome-user slide-in-right">
                 <h1>Welcome </h1>
                 <h1>{currentUser.email} !</h1>
             </div>
 
-            <Link to="/">
-                <button title="back to top" className="profile-buttons">
-                    &#x2616;
+            <div>
+                <Link to="/">
+                    <button title="back to top" className="profile-buttons">
+                        &#x2616;
             </button>
-            </Link>
-            <p>Home page</p>
-            <Link to="/update-profile">
-                <button title="back to top" className="profile-buttons">
-                    &#x21ba;
+                </Link>
+                <p>Home page</p>
+            </div>
+
+
+            <div>
+                <Link to="/update-profile">
+                    <button title="back to top" className="profile-buttons">
+                        &#x21ba;
             </button>
-            </Link>
-            <p> Update Profile</p>
-            <Link to="/update-profile">
-                <button title="back to top" onClick={handleLogout} className="profile-buttons">
-                    &#x21ba;
+                </Link>
+                <p> Update Profile</p>
+            </div>
+
+
+            <div>
+                <Link to="/update-profile">
+                    <button title="back to top" onClick={handleLogout} className="profile-buttons">
+                        &#x21ba;
             </button></Link>
-            <p>Logout</p>
+                <p>Logout</p>
+            </div>
+
+
+
         </Container>
     );
 }

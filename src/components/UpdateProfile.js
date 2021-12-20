@@ -72,7 +72,7 @@ const Signup = () => {
                     history.push("/profile")
                 })
                 .catch(() => {
-                    const errorCode = error.code;
+
                     const errorMessage = error.message;
 
                     setError(errorMessage)
@@ -88,30 +88,30 @@ const Signup = () => {
     }
 
     return (
-        <>
-            <Container spacing={2} sx={{ backgroundColor: theme.bg, color: theme.text }} className="form-page">
-                <div className="back-btn-container">
-                    <button style={{ color: theme.text }} onClick={handleClick} className="back-btn"> &#x3c; Back </button>
-                </div>
-                <div className="form-title">
-                    <h1>Update Profile</h1>
-                </div>
 
-                {error && <Alert variant="outlined" severity="error"> {error}</Alert>}
-                <form onSubmit={handleSubmit}>
-                    <InputField error={formSubmited ? emailValidationError : ""} name="Email: " type="email" required value={emailInput} onChange={handleChangeEmail} />
+        <Container sx={{ backgroundColor: theme.bg, color: theme.text }} className="form-page slide-in-elliptic-top-fwd">
+            <div className="back-btn-container">
+                <button style={{ color: theme.text }} onClick={handleClick} className="back-btn"> &#x3c; Back </button>
+            </div>
+            <div className="form-title">
+                <h1>Update Profile</h1>
+            </div>
 
-                    <InputField error={formSubmited ? passwordValidationError : ""} name="Password: " type="password" required value={passwordInput} onChange={handleChangePassword} />
+            {error && <Alert variant="outlined" severity="error"> {error}</Alert>}
+            <form onSubmit={handleSubmit}>
+                <InputField error={formSubmited ? emailValidationError : ""} name="Email: " type="email" required value={emailInput} onChange={handleChangeEmail} />
 
-                    <InputField error={formSubmited ? passwordConfirmationError : ""} name="Confirm Password: " type="password" required value={passwordConfirmation} onChange={handlePasswordConfirmation} />
-                    <Button color="primary" size="large"
-                        variant="outlined" type="submit" disabled={loading}>Update</Button>
-                    <p><small>All * fields are required</small></p>
+                <InputField error={formSubmited ? passwordValidationError : ""} name="Password: " type="password" required value={passwordInput} onChange={handleChangePassword} />
 
-                </form>
+                <InputField error={formSubmited ? passwordConfirmationError : ""} name="Confirm Password: " type="password" required value={passwordConfirmation} onChange={handlePasswordConfirmation} />
+                <Button color="primary" size="large"
+                    variant="outlined" type="submit" disabled={loading}>Update</Button>
+                <p><small>All * fields are required</small></p>
 
-            </Container>
-        </>
+            </form>
+
+        </Container>
+
     );
 }
 

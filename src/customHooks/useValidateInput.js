@@ -22,22 +22,24 @@ const useValidateInput = (emailInput, passwordInput, confirmPassword = null) => 
             if (emailInput.match(email)) {
                 setEmailValidationError("")
                 setSuccess(true);
-                console.log("Enter email match")
+
             } else {
                 setEmailValidationError("Invalid e-mail format.")
                 setSuccess(false);
                 console.log("Enter emial doesnt match")
             }
+        } else {
+            setEmailValidationError("This field is required")
         }
         if (passwordInput) {
             if (passwordInput.match(paswd)) {
                 setPasswordValidationError("")
                 setSuccess(true);
-                console.log("Enter password match")
+
             } else {
                 setPasswordValidationError("Password has to be between 7 and 15 characters long and contain at least one numeric digit and a special character.")
                 setSuccess(false);
-                console.log("Enter password doesnt match")
+
             }
         }
         if (confirmPassword) {

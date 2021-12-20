@@ -62,6 +62,7 @@ body {
 /* BACK BUTTON */
 .back-btn-container{
   position: relative;
+  z-index: 1;
 }
 .back-btn{
   position: absolute;
@@ -135,8 +136,8 @@ body {
   background: rgb(93, 102, 112);
 }
 .welcome-user{
-  margin-bottom: 5%;
-  margin-top: 5%;
+  margin-bottom: 2%;
+  margin-top: 2%;
 }
 
 /*---------------------------NOTE CARD COMPONENT---------------------------*/
@@ -186,16 +187,21 @@ body {
   flex-direction: column; 
   margin: auto; 
   padding-bottom: 20px;
+ 
 }
 .input-container input{
   height: 2em;
   color:rgb(255, 255, 255);
+  display: block;
   background-color: transparent;
   box-shadow: 1px 1px 10px black;
+  -webkit-box-shadow: 1px 1px 10px black;
   border: none;
   border-radius: 5px;
   margin: 20px;
   padding: 0.5em;
+ 
+ 
 }
 .input-container input:active{
   background-color: transparent;
@@ -216,12 +222,18 @@ body {
   border-radius: 20px;
   font-size: 1.2em;
   margin: auto;
-  padding: 3%;
-  padding-bottom: 50px;
+ padding: 1%;
+  padding-bottom: 30px;
   margin-top: 5%;
+ 
 }
 .form-title{
   margin-top: 3%;
+}
+.form-page form{
+max-width: 350px;
+margin: auto;
+
 }
 
 @media only screen and (max-width: 385px) {
@@ -248,7 +260,7 @@ body {
       flex-direction: column;
     }
     .back-btn {
-      top: 0;
+      top: 5px;
     }
     .details-text{
       max-width:100%;
@@ -258,10 +270,10 @@ body {
       padding-top: 40px;
     }
     .back-btn{
-      font-size: 0.7em;
+      font-size: 1em;
       margin-top: 5%;
       padding: 1%;
-      width: 50px;
+      width: 70px;
     }
   }
   
@@ -402,8 +414,8 @@ body {
 /* BACKGROUND ANIMATION DETAILS PAGE*/
 
 .slide-in-elliptic-top-fwd {
-	-webkit-animation: slide-in-elliptic-top-fwd 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
-	        animation: slide-in-elliptic-top-fwd 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+	-webkit-animation: slide-in-elliptic-top-fwd 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+	        animation: slide-in-elliptic-top-fwd 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
 }
 
  @-webkit-keyframes slide-in-elliptic-top-fwd {
@@ -550,160 +562,4 @@ body {
     opacity: 1;
   }
 }
-
-/* @media only screen and (max-width: 375px) { */
-
-/* PROFILE PAGE*/
-/* .profile-info{
-  flex-direction: column;
-}
-body {
-  background-size: cover;
-  background-position-x: right;
-    }  */
-
-/*card container*/
-/* .note-card{
-  height: 500px;
-  padding: 1%;
-  padding-top: 10%;
-} */
-
-/* BACK TO TOP BUTTON*/
-/* .back-to-top {
-  font-size: 20px;
-} */
-/* images*/
-/* .image img {
-  width: 180px;
-} 
- .default-img{
-  height: 9em;
-} 
-
-.total-container {
-  max-width: 90%;
-  width: 90%;
-  margin: auto;
-  margin-top: 5%;
-  
-} */
-/*DETAILS BOX*/
-/* .details-box{
-  width: 90%; 
-  text-align: center;
- 
-} */
-/**/
-/* .back-btn-container{
-width: 100%;
-padding: 0;
-font-size: 0.8em;
-}
-
-.content-container{
-  width: 99%;
-  margin: auto;
-} */
-/**/
-/* 
-.all-details{
-  width: 90%;
-  margin: auto;
-  height: max-content; 
-}
-
-.images-container{
-  width: 90%;
-  margin: auto;
-  padding: 0;
-} */
-/* all-details >>>   */
-
-/* .details-image{
-  width: 99%;
-  margin: auto;
-  margin-top: 20%;
-  padding: 0; 
-}
-.details-image img{
-  width: 150px;
-  padding: 0;
-  margin: auto;
-}
-.details-text{
-  padding: 0;
-  margin: auto;
-} */
-/* details-text >>>   */
-/* .mission-name{
-  width: 90%;
-  margin: auto;
- margin-bottom: 10px;
-  font-size: 2em;
-  }
-.mission-description{
-  width: 100%;
-  margin: 0;
-  padding: 0;
-  }
-.mission-launch{
-  width: 90%;
-  margin: 0;
-  padding: 0;
-  } */
-/*FORM PAGE*/
-/* .form-page{ 
-  width: 90%;
-  margin: auto;
-  padding:5%;
-  margin-top: 5%;
-  font-size: 0.8em;
-  } */
-/* } */
-
-/* @media only screen and (max-width: 958px){ */
-
-
-  /* .details-image{
-    margin-top: 15%;
-  } */
-  /* body {
-    background-size: cover;
-    background-position-x: right;
-      } 
-  .details-box {
-    flex-direction: column;
-  }
-
-  .back-btn {
-    top: 0;
-  }
-
-} */
-
-/* @media only screen and (max-width: 1300px){
-  body {
-    background-size: cover;
-    background-position-x: right;
-      } 
-
- 
-
-  .logo{
-  max-height: 40px;
-  height: 30px;
-  padding-left: 1em;
-    }
-    .details-image{
-      margin-left: 0%;
-    }
-
-
-} */
-
-/* @media only screen and (max-width: 1812px){
- 
-} */
-
 
