@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom";
 import useFetch from "../customHooks/useFetch";
 import { useHistory } from 'react-router-dom'
-import { useContext } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { ThemeContext } from '../context/ThemeContext';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
@@ -15,6 +15,7 @@ const LaunchDetails = () => {
     //fetching single launch data with id from params
     const { id } = useParams();
     const { data: launch, error, isPending } = useFetch(process.env.REACT_APP_BASE_URL + id);
+
 
     //theme context
     const { isDarkTheme, light, dark } = useContext(ThemeContext)
@@ -32,6 +33,17 @@ const LaunchDetails = () => {
         return `${dateArray[2]}.${dateArray[1]}.${dateArray[0]}`
     }
 
+    const [currentImage, setCurrentImage] = useState("")
+
+
+    // function handleImgClick(index) {
+    //     setCurrentIndex(index)
+    // }
+
+    function handleImgClick(e) {
+        setCurrentImage(e.target.src)
+
+    }
     return (
         <>
             <Container className="slide-in-elliptic-top-fwd">
@@ -51,78 +63,87 @@ const LaunchDetails = () => {
                 {error && <div> {error} </div>}
                 {launch && (
                     <Box
-                        className="details-box"
                         sx={{
                             backgroundColor: theme.bg,
                             borderRadius: "20px",
                             border: "3px ridge rgb(255, 255, 255, 0.2)",
                             color: theme.text,
                         }} >
+                        <div className="details-box">
+                            <div className="mission-image">
+                                {launch.links.mission_patch_small && (
+                                    <img
+                                        src={launch.links.mission_patch_small}
+                                        alt={launch.mission_name + "logo"}
+                                    />
+                                )}
+                            </div>
 
-                        <div className="mission-image">
-                            {launch.links.mission_patch_small && (
-                                <img
-                                    src={launch.links.mission_patch_small}
-                                    alt={launch.mission_name + "logo"}
-                                />
-                            )}
+                            <Grid className="details-text">
+                                <Typography
+                                    className="tracking-in-expand"
+                                    variant="h3"
+                                    fontFamily="'Teko', sans-serif"
+                                >
+                                    <h2>{launch.mission_name}</h2>
+                                </Typography>
+
+                                <Grid className="slide-in-right">
+                                    <Typography variant="body1" fontFamily="'Teko', sans-serif" >
+                                        {launch.details}
+                                        {!launch.details && <p>No description available     &#x2639;</p>}
+                                        <p>Launch date: {formatDate(launch.launch_date_local)}</p>
+                                        <Grid
+                                            sx={{
+                                                borderBottom: "1px solid",
+                                                borderTop: "1px solid",
+                                                borderColor: theme.text,
+                                            }} >
+                                            <h3>Rocket: </h3>
+                                            <p>Name: {launch.rocket.rocket_name} </p>
+                                            <p>Type: {launch.rocket.rocket_type}</p>
+                                        </Grid>
+                                    </Typography>
+                                </Grid>
+                                <Grid
+                                    className="slide-in-right">
+                                    <Typography
+                                        variant="body1"
+                                        fontFamily="'Teko', sans-serif">
+
+                                        <p>Launch site: {launch.launch_site.site_name_long}</p>
+                                        <p>
+                                            Launch success:{" "}
+                                            {launch.launch_success ? "Succesfull" : "Not Succesfull"}
+                                        </p>
+                                    </Typography>
+                                </Grid>
+
+                            </Grid>
                         </div>
 
-                        <Grid className="details-text">
-                            <Typography
-                                className="tracking-in-expand"
-                                variant="h3"
-                                fontFamily="'Teko', sans-serif"
-                            >
-                                <h2>{launch.mission_name}</h2>
-                            </Typography>
+                        <div>
 
-                            <Grid className="slide-in-right">
-                                <Typography variant="body1" fontFamily="'Teko', sans-serif" >
-                                    {launch.details}
-                                    {!launch.details && <p>No description available     &#x2639;</p>}
-                                    <p>Launch date: {formatDate(launch.launch_date_local)}</p>
-                                    <Grid
-                                        sx={{
-                                            borderBottom: "1px solid",
-                                            borderTop: "1px solid",
-                                            borderColor: theme.text,
-                                        }} >
-                                        <h3>Rocket: </h3>
-                                        <p>Name: {launch.rocket.rocket_name} </p>
-                                        <p>Type: {launch.rocket.rocket_type}</p>
-                                    </Grid>
-                                </Typography>
-                            </Grid>
-                            <Grid
-                                className="slide-in-right">
-                                <Typography
-                                    variant="body1"
-                                    fontFamily="'Teko', sans-serif">
-
-                                    <p>Launch site: {launch.launch_site.site_name_long}</p>
-                                    <p>
-                                        Launch success:{" "}
-                                        {launch.launch_success ? "Succesfull" : "Not Succesfull"}
-                                    </p>
-                                </Typography>
-                            </Grid>
-                            <div>
-                                {launch.links.flickr_images &&
-                                    launch.links.flickr_images.map((img, index) => (
-                                        <img
-                                            src={img}
-                                            alt="launch scene"
-                                            key={index}
-                                            className="flickr-gallery"
-                                        ></img>
-                                    ))}
+                            {launch.links.flickr_images &&
+                                launch.links.flickr_images.map((img, index) => (
+                                    <img
+                                        src={img}
+                                        alt="launch scene"
+                                        key={index}
+                                        className="flickr-gallery"
+                                        onClick={handleImgClick}
+                                    ></img>
+                                ))}
+                            <div className="single-flicker-image">
+                                {currentImage && <img src={currentImage} alt="launch scene" />}
                             </div>
-                        </Grid>
 
 
+                        </div>
 
                     </Box>
+
+
 
                 )}
 

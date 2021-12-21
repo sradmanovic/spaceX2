@@ -106,6 +106,27 @@ const LaunchList = () => {
         });
     };
 
+    // function to change the value of xs atribute in Grid based on screen width
+    //it rerenders to many times and slows down the app
+
+    // const [screenWidth, setScreenWidth] = useState(window.innerWidth)
+    // const [size, setSize] = useState(6)
+    // useEffect(() => {
+    //     console.log("bla")
+    //     const handleResize = () => {
+    //         setScreenWidth(window.innerWidth)
+    //         if (screenWidth > 660) {
+    //             setSize(6)
+    //         } else {
+    //             setSize(12)
+    //         }
+    //     }
+    //     window.addEventListener('resize', handleResize)
+    //     return () => {
+    //         window.removeEventListener('resize', handleResize)
+    //     }
+    // }, [screenWidth])
+
     return (
         <>
             <Container >
